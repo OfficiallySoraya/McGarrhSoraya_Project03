@@ -7,18 +7,21 @@ public class Controller : MonoBehaviour
     public CharacterController controller;
     public Transform cam;
 
+public float verticalVelocity;
+    public float gravity = 14.0f;
+    public float jumpForce = 10.0f;
     public float speed = 6f;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
 
-    public LayerMask groundLayers;
-    public float jumpForce = 7;
-    private Rigidbody rb;
-    public SphereCollider col;
+    
 
-    void Start(){
-        col.GetComponent<SphereCollider>();
+    void Start()
+    {
+        controller = GetComponent<CharacterController>();
     }
+
+
 
     void Update()
     {
@@ -36,11 +39,23 @@ public class Controller : MonoBehaviour
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            }
         }
+
+
+        if(controller.isGrounded)
+           {
+               verticalVelocity = -gravity * Time.deltaTime;
+               if(Input.GetKey(KeyCode.Space))
+               {
+                   verticalVelocity = jumpForce;
+               }
+           }
+           else
+           {
+               verticalVelocity -= gravity * Time.deltaTime;
+           }
+
+           Vector3 moveVector = new Vector3(0,verticalVelocity,0);
+           controller.Move(moveVector * Time.deltaTime);
     }
 }
