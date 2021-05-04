@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 0
+    path: Assets/BombOmb.unity
+    guid: 8f89c5ed278df364c8ea4154a98e7224
+  - enabled: 1
+    path: Assets/Scenes/PeachesCastle.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Battlefield.unity
+    guid: 5ec037195c5dc9d459704d963d0d6757
   m_configObjects: {}
