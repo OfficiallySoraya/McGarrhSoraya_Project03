@@ -13,7 +13,7 @@ public ParticleSystem _psystem;
 void Start()
     {
         source = GetComponent<AudioSource>();
-         _psystem = GetComponent<ParticleSystem>();
+         GetComponent<ParticleSystem>();
     }
 
     void OnTriggerEnter(Collider other)
