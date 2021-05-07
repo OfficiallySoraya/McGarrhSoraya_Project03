@@ -6,20 +6,20 @@ public class ParticleNAudio : MonoBehaviour
 {
     public GameObject player;
 public AudioSource source;    
-public ParticleSystem effect;
+public ParticleSystem _psystem;
 
     
 
 void Start()
     {
         source = GetComponent<AudioSource>();
-         
+         _psystem = GetComponent<ParticleSystem>();
     }
 
     void OnTriggerEnter(Collider other)
     {
         source.Play();
-        effect.Play();
+        _psystem.Play();
     }
 
 }
